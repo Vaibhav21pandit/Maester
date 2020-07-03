@@ -4,8 +4,17 @@ import { StyleSheet, Text,Image, View,TextInput, Button,TouchableOpacity, _Text,
 export default class Home extends Component {
     render(){
         return(
-            <View></View>
+            <View style={styles.container}>
+                <Text>Hi There !!</Text>
+            </View>
 
         )
     }
-}
+} 
+const styles= StyleSheet.create({
+    container:{
+        flex:1,
+        alignItems:'center',
+        justifyContent:'center'
+    }
+})

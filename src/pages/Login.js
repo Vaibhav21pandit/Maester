@@ -1,39 +1,55 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text,Image, View,TextInput, Button,TouchableOpacity, _Text, ImageBackground } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 
 export default class Login extends Component {
-//   state={
-//     email:'',
-//     password:''
-//   }
+  SignupAction(){
+    Actions.Signup()
+  }
+  HomeAction(){
+    Actions.home()
+  }
   render(){
       return(
-          <ImageBackground style={styles.container} 
-           source={require('/home/vaibhav/Documents/Maester/Maester/assets/Temple_wall.jpeg')}>   
+          <View style={styles.container} >   
+            
             <Image style={{marginVertical:20}} source={require('/home/vaibhav/Documents/Maester/Maester/assets/amrut.png')} />
+              
               <TextInput  
               style={styles.inputText}
               underlineColorAndroid='rgba(0,0,0,0)'
               placeholder="Email..." 
+              keyboardType='email-address'
+              onSubmitEditing={() => this.password.focus()}
               placeholderTextColor="gold"/>
-              {/* onChangeText={text => this.setState({email:text})}/> */}
+
               <TextInput
               style={styles.inputText}
-              underlineColorAndroid='rgba(0,0,0,0)'
               placeholder="Password..." 
-              placeholderTextColor="gold"/>
+              // secureTextEntry='true'
+              placeholderTextColor="gold"
+              keyboardType='default'
+              ref={(input) => this.password=input} />
+
               <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Login</Text>
+                <Text style={styles.LoginText} onPress={this.HomeAction}>Login</Text>
               </TouchableOpacity>
 
-          </ImageBackground>
+              <Text>Don't have an account yet?</Text>
+
+              <TouchableOpacity style={styles.button}>
+                <Text style={styles.SignupText} onPress={this.SignupAction}>Signup</Text>
+                </TouchableOpacity>
+
+          </View>
       );
   }
 }  
 
 const styles = StyleSheet.create({
     container:{
+        backgroundColor:'#ffffff',
         justifyContent:'center',
         alignItems:'center',
         flex:1,
@@ -64,11 +80,18 @@ const styles = StyleSheet.create({
         paddingVertical:5,
         borderRadius:5
       },
-      buttonText:{
+      LoginText:{
         fontSize:16,
         fontWeight:'300',
         color:'gold',
         textAlign:'center'
+      },
+      SignupText:{
+        fontSize:16,
+        fontWeight:'200',
+        color:'gold',
+        textAlign:'center'
+
       }
 
 })
