@@ -1,59 +1,53 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text,Image, View,TextInput, Button,TouchableOpacity, _Text, ImageBackground } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-
 
 export default class Login extends Component {
-  SignupAction(){
-    Actions.Signup()
-  }
-  HomeAction(){
-    Actions.home()
-  }
   render(){
-      return(
-          <View style={styles.container} >   
+    return(
+        <View style={styles.container} >   
+          <Image style={styles.image} source={require('/home/vaibhav/Documents/Maester/Maester/assets/logo-1.png')} />
             
-            <Image style={{marginVertical:20}} source={require('/home/vaibhav/Documents/Maester/Maester/assets/amrut.png')} />
-              
-              <TextInput  
-              style={styles.inputText}
-              underlineColorAndroid='rgba(0,0,0,0)'
-              placeholder="Email..." 
-              keyboardType='email-address'
-              onSubmitEditing={() => this.password.focus()}
-              placeholderTextColor="gold"/>
+            <TextInput  
+            style={styles.inputText}
+            underlineColorAndroid='rgba(0,0,0,0)'
+            placeholder="Email..." 
+            keyboardType='email-address'
+            onSubmitEditing={() => this.password.focus()}
+            placeholderTextColor="gold"/>
 
-              <TextInput
-              style={styles.inputText}
-              placeholder="Password..." 
-              // secureTextEntry='true'
-              placeholderTextColor="gold"
-              keyboardType='default'
-              ref={(input) => this.password=input} />
+            <TextInput
+            style={styles.inputText}
+            placeholder="Password..." 
+            // secureTextEntry='true'
+            placeholderTextColor="gold"
+            keyboardType='default'
+            ref={(input) => this.password=input} />
 
-              <TouchableOpacity style={styles.button}>
-                <Text style={styles.LoginText} onPress={this.HomeAction}>Login</Text>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.LoginText} onPress={()=>this.props.navigation.navigate('Home')}>Login</Text>
+            </TouchableOpacity>
+
+            <Text>Don't have an account yet?</Text>
+
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.SignupText} onPress={()=>this.props.navigation.navigate('Signup')}>Signup</Text>
               </TouchableOpacity>
 
-              <Text>Don't have an account yet?</Text>
-
-              <TouchableOpacity style={styles.button}>
-                <Text style={styles.SignupText} onPress={this.SignupAction}>Signup</Text>
-                </TouchableOpacity>
-
-          </View>
-      );
+        </View>
+    );
   }
 }  
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor:'#ffffff',
         justifyContent:'center',
         alignItems:'center',
         flex:1,
       
+    },
+    image:{
+      width:300,
+      height:300
     },
     inputView:{
         width:"80%",

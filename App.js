@@ -1,17 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import React,{Component} from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, TextComponent, Button } from 'react-native';
-// import 'react-native-gesture-handler';
 
-import Signup from './src/pages/Signup'
-import Routes from './src/Routes';
+import 'react-native-gesture-handler';
+
+// import {Provider} from 'react-redux';
+// import store from './src/config/store';
+
+// import Signup from './src/pages/Signup';
+// import Login from './src/pages/Login';
+// import GetOTP from './src/pages/RegisterOTP';
+// import Home from './src/pages/Home';
+import Navigation from './src/Navigation'
+// const Stack=createStackNavigator();
+
 export default function App() {
 
   return (
-      <View style={styles.container}>
-        <Routes />
-      </View>
-      
+      <Navigation />
+    // <NavigationContainer>
+    //   <Stack.Navigator initialRouteName='Signup'>
+    //     <Stack.Screen name='Login' component={Login} />
+    //     <Stack.Screen name='Signup' component={Signup} />
+    //     <Stack.Screen name='GetOTP' component={GetOTP} />
+    //     <Stack.Screen name='Home' component={Home} />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
     );   
 }
     

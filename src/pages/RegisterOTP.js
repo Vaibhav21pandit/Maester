@@ -5,7 +5,7 @@ export default class RegisterOTP extends Component {
     render(){
         return (
             <View style={styles.container}>
-                <Image style={styles.logo} source={require('/home/vaibhav/Documents/Maester/Maester/assets/amrut.png')} />
+                <Image style={styles.logo} source={require('/home/vaibhav/Documents/Maester/Maester/assets/logo-1.png')} />
                 <TextInput
                     style={styles.inputText}
                     keyboardType='number-pad'

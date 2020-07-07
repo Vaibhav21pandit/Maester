@@ -1,56 +1,50 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text,Image, View,TextInput, Button,TouchableOpacity, _Text, ImageBackground } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-// import Login from './Login';
+import { StyleSheet, Text,Image, View,TextInput, Button,TouchableOpacity, _Text,Animated, ImageBackground, useWindowDimensions } from 'react-native';
+import useDimensions from '@react-native-community/hooks';
 
 export default class Signup extends Component {
-  LoginAction(){
-    Actions.login()
-  }
-  GetOTPAction(){
-    Actions.otp()
-  }
-    render(){
-        return(
-            <View style={styles.container}  >
-                <Image style={styles.logo} source={require('/home/vaibhav/Documents/Maester/Maester/assets/amrut.png')} />
-                
-                <TextInput style={styles.inputText}
-                underlineColorAndroid='rgba(255,255,255,0.1)'
-                placeholder="Full Name"
-                placeholderTextColor='gold'
-                onSubmitEditing={()=>this.number.focus()}
-                />
+  render(){
+    // console.log(this.props);
+    return(
+        <View style={styles.container}>
+            <Image style={styles.logo} source={require('/home/vaibhav/Documents/Maester/Maester/assets/logo-1.png')} />
+            
+            <TextInput style={styles.inputText}
+            underlineColorAndroid='rgba(255,255,255,0.1)'
+            placeholder="Full Name"
+            placeholderTextColor='gold'
+            onSubmitEditing={()=>this.number.focus()}
+            />
 
-                <TextInput style={styles.inputText}
-                underlineColorAndroid='rgba(255,255,255,0.1)'
-                placeholder="Phone Number"
-                placeholderTextColor='gold'
-                ref={(input)=>this.number=input}
-                />
-                
-                <TouchableOpacity style={styles.button}>
-                  <Text style={styles.buttonText} onPress={this.GetOTPAction}>Get OTP</Text>
-                </TouchableOpacity>
-                
-                <Text style={styles.LoginText}>Have an account already?</Text>
-                
-                <TouchableOpacity style={styles.LoginRouter} onPress={this.LoginAction}>
-                  <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity>
+            <TextInput style={styles.inputText}
+            underlineColorAndroid='rgba(255,255,255,0.1)'
+            placeholder="Phone Number"
+            placeholderTextColor='gold'
+            ref={(input)=>this.number=input}
+            />
+            
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText} onPress={()=>this.props.navigation.navigate('GetOTP')}>Get OTP</Text>
+            </TouchableOpacity>
+            
+            <Text style={styles.LoginText}>Have an account already?</Text>
+            
+            <TouchableOpacity style={styles.LoginRouter} onPress={()=>this.props.navigation.navigate('Login')}>
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
 
-            </View>
-          
-        )
-    }
+        </View>
+      
+    )
+  }
 }
 const styles = StyleSheet.create({
     container:{
         justifyContent:'center',
         alignItems:'center',
         flex:1,
-        backgroundColor:'rgba(255,255,255,0.9)',
-        color:'#f5f5f5'
+        backgroundColor:'#FFFFFF'
+        // color:'#f5f5f5'
       
     },
     inputView:{
@@ -89,8 +83,11 @@ const styles = StyleSheet.create({
         textAlign:'center'
       },
       logo:{
-          marginVertical:30,
+          marginVertical:20,
           alignSelf:'center',
+          width:300,
+          height:300
+
           
 
       },

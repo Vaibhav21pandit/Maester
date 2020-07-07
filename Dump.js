@@ -43,3 +43,28 @@ export default function App(){
         </View>
     )
 } 
+
+const styles = StyleSheet.create({
+    flexview:{
+        // width:landscape ? '100%':'30%',
+        backgroundColor:'gold'
+
+    },
+    ListText:{
+        // backgroundColor:'pink',
+        alignContent:'center',
+        marginVertical:20,
+        alignSelf:'center',
+        padding:30,
+        fontSize:20,
+        marginHorizontal:10,
+        // marginLeft:35
+    },
+    listButton:{
+        backgroundColor:'rgba(0,0,0,0.2)',
+        marginLeft:35,
+        marginHorizontal:10,
+        alignContent:'center',
+        marginVertical:20,
+    }
+})
