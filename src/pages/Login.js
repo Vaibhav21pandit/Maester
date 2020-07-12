@@ -4,7 +4,7 @@ import { StyleSheet, Text,Image, View,TextInput, Button,TouchableOpacity, _Text,
 export default class Login extends Component {
   render(){
     return(
-        <View style={styles.container} >   
+        <View style={styles.container}>   
           <Image style={styles.image} source={require('/home/vaibhav/Documents/Maester/Maester/assets/logo-1.png')} />
             
             <TextInput  
@@ -87,5 +87,4 @@ const styles = StyleSheet.create({
         textAlign:'center'
 
       }
-
 })

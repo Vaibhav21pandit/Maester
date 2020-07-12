@@ -1,49 +1,38 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text,Image, View,FlatList, ImageBackground, ImageBase, ScrollView, StatusBar, useWindowDimensions} from 'react-native';
-import {useDeviceOrientation,useDimensions}  from '@react-native-community/hooks';
+import { StyleSheet, Text,Image, View,FlatList, ImageBackground, ImageBase,SafeAreaView} from 'react-native';
 import { TouchableOpacity, TouchableHighlight } from 'react-native-gesture-handler';
-import Header from '../components/Header';
+import Carousel from '../components/Carousel';
 
-export default function Home()  {  
-    console.log(useDeviceOrientation())
+
+export default function Home({navigation})  {  
+    const [Tiles,setTiles]=useState([
+        {Heading:'Katha Amrit',key:'1',image:require('/home/vaibhav/Documents/Maester/Maester/assets/Amrit_Kalash.jpeg'),onpress:()=> {navigation.navigate('LiveAarti')}},
+        {Heading:'Live Aarti',key:'2',image:require('/home/vaibhav/Documents/Maester/Maester/assets/Aarti.jpeg'),onpress:()=> navigation.navigate('LiveAarti')},
+        {Heading:'Gallery',key:'3',image:require('/home/vaibhav/Documents/Maester/Maester/assets/Radha-Krishna.jpeg'),onpress:()=> navigation.navigate('LiveAarti')},
+        {Heading:'Amrit Kund',key:'4',image:require('/home/vaibhav/Documents/Maester/Maester/assets/Sun-1.jpeg'),onpress:()=> navigation.navigate('LiveAarti')},
+        {Heading:'Stotra Shakti',key:'5',image:require('/home/vaibhav/Documents/Maester/Maester/assets/Kailash.jpeg'),onpress:()=> navigation.navigate('LiveAarti')},
+    ]);
+
     return(
-        <ScrollView>
-        < ImageBackground style={styles.container} source={require('/home/vaibhav/Documents/Maester/Maester/assets/Temple_wall.jpeg')}>
-            < Header/>
-            <View>
-
-                <ImageBackground style={styles.tile} source={require('/home/vaibhav/Documents/Maester/Maester/assets/logo-1.png')} > 
-                    <TouchableOpacity style={styles.TileButton}>
-                        <Text style={styles.TileButtonText}>Katha</Text>
-                    </TouchableOpacity>
+        <SafeAreaView style={{flex:1}}>
+            <Carousel />
+        < View style={styles.container}>
+            <FlatList numColumns={1}
+            // keyExtractor={(item)=>item.Id}
+            data={Tiles}
+            renderItem={({item})=>
+            (
+                <ImageBackground style={styles.tile} source={item.image} > 
+                <TouchableOpacity style={styles.TileButton} onPress={item.onpress}>
+                    <Text style={styles.TileButtonText}>{item.Heading}</Text>
+                </TouchableOpacity>
                 </ ImageBackground>
-                
-                <ImageBackground style={styles.tile} source={require('/home/vaibhav/Documents/Maester/Maester/assets/logo-1.png')} > 
-                    <TouchableOpacity style={styles.TileButton}>
-                        <Text style={styles.TileButtonText}>Katha</Text>
-                    </TouchableOpacity>
-                </ ImageBackground>
-
-                <ImageBackground style={styles.tile} source={require('/home/vaibhav/Documents/Maester/Maester/assets/logo-1.png')} > 
-                    <TouchableOpacity style={styles.TileButton}>
-                        <Text style={styles.TileButtonText}>Katha</Text>
-                    </TouchableOpacity>
-                </ ImageBackground>
-                
-                <ImageBackground style={styles.tile} source={require('/home/vaibhav/Documents/Maester/Maester/assets/logo-1.png')} > 
-                    <TouchableOpacity style={styles.TileButton}>
-                        <Text style={styles.TileButtonText}>Katha</Text>
-                    </TouchableOpacity>
-                </ ImageBackground>
-
-                <ImageBackground style={styles.tile} source={require('/home/vaibhav/Documents/Maester/Maester/assets/logo-1.png')} > 
-                    <TouchableOpacity style={styles.TileButton}>
-                        <Text style={styles.TileButtonText}>Katha</Text>
-                    </TouchableOpacity>
-                </ ImageBackground>
-            </View>
-        </ImageBackground>
-        </ScrollView>
+            )
+            }
+            />
+        
+        </View>
+        </SafeAreaView>
     
     );
     
@@ -52,21 +41,24 @@ export default function Home()  {
 const styles= StyleSheet.create({
     container:{
         flex:1,
+        flexDirection:'row',
         alignItems:'stretch',
-        justifyContent:'flex-start',
-        // backgroundColor:'#fff',
+        justifyContent:'flex-end',
+        backgroundColor:'#d9e3f0',
         // paddingTop:30
         
     },
 
     tile:{
-        alignSelf:'center',
+        // alignSelf:'center',
         // flexDirection:'column',
-        height:200,
-        width:200,
+        height:150,
+        width:'100%',
         alignItems:'center',
         justifyContent:'flex-end',
-        marginVertical:5
+        marginVertical:5,
+        marginHorizontal:10,
+        
 
     },
     TileButton:{
@@ -77,6 +69,7 @@ const styles= StyleSheet.create({
     },
     TileButtonText:{
         fontSize:15,
+        color:'#ffffff',
         fontWeight:'bold',
         textAlign:'center',
         paddingVertical:5,
