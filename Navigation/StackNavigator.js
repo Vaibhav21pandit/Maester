@@ -7,10 +7,11 @@ import Signup from '../src/pages/Signup';
 import Home from '../src/pages/Home';
 import GetOTP from '../src/pages/RegisterOTP'
 import LiveAarti from '../src/pages/LiveAarti';
+import VideoSwiper from '../src/pages/VideoSwiper';
 
 const Stack=createStackNavigator();
 
-export default function Navigation({navigation}) {
+function Navigation({navigation}) {
 
   return (
       <Stack.Navigator initialRouteName='Signup' screenOptions={{headerShown:true,headerTitleAlign:'center',headerTintCOlor:'gold'}}>
@@ -32,4 +33,15 @@ export default function Navigation({navigation}) {
     
     );   
 }
+
+function StackTabNavigation(){
+
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name='VideoSwipe' component={VideoSwiper} />
+    </Stack.Navigator>
+  )
+
+}
   
+export {Navigation,StackTabNavigation};

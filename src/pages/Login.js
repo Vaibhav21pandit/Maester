@@ -18,7 +18,7 @@ export default class Login extends Component {
             <TextInput
             style={styles.inputText}
             placeholder="Password..." 
-            // secureTextEntry='true'
+            secureTextEntry={true}
             placeholderTextColor="gold"
             keyboardType='default'
             ref={(input) => this.password=input} />
@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
     },
     image:{
       width:300,
-      height:300
+      height:300,
+      borderRadius:15
     },
     inputView:{
         width:"80%",
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
         height:100,
         marginBottom:40,
         justifyContent:"center",
+        alignItems:'center',
         padding:20
       },
       inputText:{
@@ -65,6 +67,8 @@ const styles = StyleSheet.create({
         height:50,
         borderRadius:20,
         color:"white",
+        paddingHorizontal:5,
+        alignSelf:'center'
         // underlineColorAndroid:'white'
       },
       button:{

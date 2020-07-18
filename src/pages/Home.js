@@ -16,21 +16,23 @@ export default function Home({navigation})  {
     return(
         <SafeAreaView style={{flex:1}}>
             <Carousel />
-        < View style={styles.container}>
-            <FlatList numColumns={1}
-            // keyExtractor={(item)=>item.Id}
-            data={Tiles}
-            renderItem={({item})=>
-            (
-                <ImageBackground style={styles.tile} source={item.image} > 
-                <TouchableOpacity style={styles.TileButton} onPress={item.onpress}>
-                    <Text style={styles.TileButtonText}>{item.Heading}</Text>
-                </TouchableOpacity>
-                </ ImageBackground>
-            )
-            }
-            />
         
+        <View style={styles.TileContainer}>
+            < View style={styles.container}>
+                <FlatList numColumns={1}
+                // keyExtractor={(item)=>item.Id}
+                data={Tiles}
+                renderItem={({item})=>
+                (
+                    <ImageBackground style={styles.tile} source={item.image} > 
+                    <TouchableOpacity style={styles.TileButton} onPress={item.onpress}>
+                        <Text style={styles.TileButtonText}>{item.Heading}</Text>
+                    </TouchableOpacity>
+                    </ ImageBackground>
+                )
+                }
+                />
+        </View>
         </View>
         </SafeAreaView>
     
@@ -49,22 +51,32 @@ const styles= StyleSheet.create({
         
     },
 
+    TileContainer:{
+        flex:1,
+        backgroundColor:'#ffffff',
+        justifyContent:'center',
+        marginTop:20,
+        alignItems:'stretch',
+        borderWidth:5,
+        borderRadius:10
+
+    },
+
     tile:{
-        // alignSelf:'center',
-        // flexDirection:'column',
         height:150,
         width:'100%',
         alignItems:'center',
         justifyContent:'flex-end',
         marginVertical:5,
         marginHorizontal:10,
+        borderWidth:5
         
-
     },
     TileButton:{
         alignSelf: 'flex-end',
-        backgroundColor:'gold',
-        alignItems:'baseline'
+        backgroundColor:'black',
+        alignItems:'baseline',
+        borderRadius:10
 
     },
     TileButtonText:{

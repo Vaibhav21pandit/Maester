@@ -4,6 +4,7 @@ import { WebView } from 'react-native-webview';
 
 
 export default class MyWebComponent extends Component {
+
    render(){
     return (<WebView style={styles.webpage} source={this.props.url} />);
   }
