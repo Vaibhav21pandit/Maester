@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text,Image, View,TextInput, Button,TouchableOpacity, _Text,Animated, ImageBackground, useWindowDimensions } from 'react-native';
-import useDimensions from '@react-native-community/hooks';
 
 export default class Signup extends Component {
   render(){

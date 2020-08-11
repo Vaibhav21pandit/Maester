@@ -3,8 +3,8 @@ import {View,Text, SafeAreaView, FlatList,Dimensions,StyleSheet} from 'react-nat
 import {Video} from 'expo-av';
 import {useNavigation} from '@react-navigation/native';
 
-const WindowHeight=Dimensions.get('window').height;
-const WindowWidth=Dimensions.get('window').width;
+const WindowHeight=Dimensions.get('screen').height;
+const WindowWidth=Dimensions.get('screen').width;
 
 export default function VideoSwiper(){
     const [pause, setPause] = useState(false);
@@ -12,10 +12,10 @@ export default function VideoSwiper(){
 
 
     // console.log(WindowWidth);
-    useEffect(() => {
-        navigation.addListener('focus', (route) => { setPause(false) });
-        navigation.addListener('blur', (route) => { setPause(true) });
-    }, []);
+    // useEffect(() => {
+    //     navigation.addListener('focus', (route) => { setPause(false) });
+    //     navigation.addListener('blur', (route) => { setPause(true) });
+    // }, []);
     const VideoData=[
         {Title:'Hi',key:'1',VideoSource:{uri:'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4'}},
         {Title:'Hi',key:'2',VideoSource:{uri:'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4'}},
@@ -26,16 +26,18 @@ export default function VideoSwiper(){
     return (
         <SafeAreaView style={styles.FlatListContainer} >
             <FlatList
+            onScroll={()=> console.log('Scrolled')}
             pagingEnabled={true}
             data={VideoData}
             renderItem={({item}) => {
                 return(
                 <View>
                     <Video 
-                        resizeMode="cover" 
-                        shouldPlay={true}
-                        isLooping={true} 
-                        style={{flex:1,height:662,width:WindowWidth}} 
+                        resizeMode="stretch" 
+                        // shouldPlay={true}
+                        
+                        // isLooping={true} 
+                        style={{flex:1,height:745,width:WindowWidth}} 
                         source={item.VideoSource} 
                     /> 
                 </View>

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text,Image, View,FlatList, ImageBackground, ImageBase,SafeAreaView} from 'react-native';
-import { TouchableOpacity, TouchableHighlight } from 'react-native-gesture-handler';
+import { StyleSheet, Text,Image, View,FlatList, ImageBackground, ImageBase,SafeAreaView,TouchableOpacity} from 'react-native';
 import Carousel from '../components/Carousel';
 
 

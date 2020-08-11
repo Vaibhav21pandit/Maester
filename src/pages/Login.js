@@ -4,8 +4,8 @@ import { StyleSheet, Text,Image, View,TextInput, Button,TouchableOpacity, _Text,
 export default class Login extends Component {
   render(){
     return(
-        <View style={styles.container}>   
-          <Image style={styles.image} source={require('/home/vaibhav/Documents/Maester/Maester/assets/logo-1.png')} />
+        <ImageBackground source={{uri:'https://github.com/Vaibhav21pandit/HostedFiles/blob/master/Temple_wall.jpeg?raw=true'}} style={styles.container}>   
+          <Image style={styles.image} source={require('/home/vaibhav/Documents/Maester/Maester/assets/logo(1).png')} />
             
             <TextInput  
             style={styles.inputText}
@@ -33,7 +33,7 @@ export default class Login extends Component {
               <Text style={styles.SignupText} onPress={()=>this.props.navigation.navigate('Signup')}>Signup</Text>
               </TouchableOpacity>
 
-        </View>
+        </ImageBackground>
     );
   }
 }  
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
       
     },
     image:{
-      width:300,
-      height:300,
+      width:350,
+      height:454,
       borderRadius:15
     },
     inputView:{

@@ -4,26 +4,20 @@ import Carousel from '../components/Carousel';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {WebView} from 'react-native-webview';
 import WebComponent from '../components/ModalWebview';
+import {useNavigation} from '@react-navigation/native'
+
 const {DeviceHeight,DeviceWidth}=Dimensions.get('window');
 
-// https://www.youtube.com/embed/-IJuKT1mHO8
-
-export default function LiveAarti({navigation}) {
+export default function LiveAarti() {
+    const navigation=useNavigation();
     const [AartiThumbnails,setAartiThumbnails]=useState([
-        {Name:'Sai Nath Aarti',key:'1',image:require('../../assets/Sai.png'),pressmethod:()=> {navigation.navigate('Home')},AartiURL:{uri:'https://www.youtube.com/embed/9ZhkYyPxRjE'}},
-        {Name:'Mahakaal Aarti',key:'2',image:require('../../assets/Mahakal.webp'),pressmethod:()=> {navigation.navigate('Home')},AartiURL:{uri:'https://www.youtube.com/embed/9ZhkYyPxRjE'}},
-        {Name:'Venkatesh Aarti',key:'3',image:require('../../assets/Venkatesh.jpeg'),pressmethod:()=> {navigation.navigate('Home')},AartiURL:{uri:'https://www.youtube.com/embed/9ZhkYyPxRjE'}},
-        {Name:' Aarti',key:'4',image:require('../../assets/SiddhiVinayak.jpg'),pressmethod:()=> {navigation.navigate('Home')},AartiURL:{uri:'https://www.youtube.com/embed/9ZhkYyPxRjE'}},
-        {Name:'Mahakaal Aarti',key:'5',image:require('../../assets/logo-1.png'),pressmethod:()=> {navigation.navigate('Home')},AartiURL:{uri:'https://www.youtube.com/embed/9ZhkYyPxRjE'}}
-    ]);
-    const AartiURLs={
-        '1':{uri:'https://www.youtube.com/embed/9ZhkYyPxRjE' },
-        '2':{uri:'https://www.youtube.com/embed/9ZhkYyPxRjE'},
-        '3':{uri:'https://www.youtube.com/embed/9ZhkYyPxRjE'},
-        '4':{uri:'https://www.youtube.com/embed/9ZhkYyPxRjE'},
-        '5':{uri:'https://www.youtube.com/embed/9ZhkYyPxRjE'}
-    };
-    
+        {Name:'Sai Nath Aarti',key:'1',image:require('../../assets/Sai.png'),AartiURL:{uri:'https://www.sai.org.in/en/sai-video-popup'}},
+        {Name:'Mahakaal Aarti',key:'2',image:require('../../assets/Mahakal.webp'),AartiURL:{uri:'https://www.youtube.com/embed/-3ecDmzjmNQ'}},
+        {Name:'Venkatesh Aarti',key:'3',image:require('../../assets/Venkatesh.jpeg'),AartiURL:{uri:'https://www.youtube.com/embed/Yqi2_3E1ZNk'}},
+        {Name:'Siddhivinayak Aarti',key:'4',image:require('../../assets/SiddhiVinayak.jpg'),AartiURL:{uri:'https://www.youtube.com/embed/C41rCWMzql4'}},
+        {Name:'Kaashi Vishwanath',key:'5',image:require('../../assets/logo-1.png'),AartiURL:{uri:'https://www.youtube.com/embed/-H2mmm5pMmY'}}
+        ]);
+        
     const [AartiView,setAartiView]=useState(false);
     const [WebViewLink,setWebViewLink]=useState('');
 
@@ -41,15 +35,16 @@ export default function LiveAarti({navigation}) {
                 renderItem={({item}) => (
                     <View >
                     <ImageBackground style={styles.Thumbnail} source={item.image}/>
-                    <TouchableOpacity style={styles.ThumbnailButton} onPress={() => setAartiView(true)}>
+                    <TouchableOpacity style={styles.ThumbnailButton} onPress={() => {setWebViewLink(item.AartiURL),setAartiView(true)}}>
                         <Text style={styles.ThumbnailButtonText}>{item.Name}</Text>
                     </TouchableOpacity>
-                    <Modal visible={AartiView}>
+                    <WebComponent visibility={AartiView} setView={setAartiView} url={WebViewLink} />
+                    {/* <Modal visible={AartiView}>
                         <View style={styles.AartiModal}> 
                             <Button style={styles.ModalButton} title='Close' onPress={() => setAartiView(false)} />
-                            <WebView style={styles.AartiView} source={item.AartiURL} />
+                            <WebView style={styles.AartiView} source={AartiURLs[item.key]} />
                         </View>
-                    </Modal>
+                    </Modal> */}
                     </View>
                     
                 )}

@@ -3,7 +3,6 @@ import React from 'react';
 import { StyleSheet, Text, View, TextComponent, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-import 'react-native-gesture-handler';
 
 // import {Provider} from 'react-redux';
 // import store from './src/config/store';
